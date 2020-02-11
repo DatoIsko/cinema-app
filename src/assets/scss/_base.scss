@@ -1,0 +1,65 @@
+* {
+  outline: none !important;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+//btns
+.btn-transparent {
+  background-color: transparent;
+  border: none;
+}
+
+.base {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.to-right {
+  @extend .base;
+  justify-content: flex-end;
+}
+
+.justify-content {
+  @extend .base;
+  justify-content: space-between;
+}
+
+.line {
+  border-bottom: 1px solid $grey;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.btn-regular {
+  background-color: #2196F3;
+  text-transform: uppercase;
+  color: $white;
+  cursor: pointer;
+  transition: $timer;
+
+  .fa {
+    margin-left: 3px;
+    transform: translateX(0);
+    transition: $timer;
+  }
+
+  &:hover {
+    background-color: #1f88dc;
+
+    .fa {
+      transform: translateX(3px);
+    }
+  }
+}

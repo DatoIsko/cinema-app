@@ -1,0 +1,64 @@
+@import "~src/assets/scss/_variables";
+@import "~src/assets/scss/_base";
+
+.movie-box {
+  cursor: pointer;
+}
+
+.movie-item {
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    .movie-poster {
+      &:after {
+        opacity: 1;
+      }
+    }
+
+    img {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.movie-poster {
+  max-height: 160px;
+
+  &:after {
+    content: '';
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, .5) 100%);
+    -webkit-background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, .5) 100%);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    opacity: 0;
+    transition: $timer;
+  }
+
+  img {
+    width: 100%;
+    backface-visibility: hidden;
+    transition: $timer;
+  }
+}
+
+.movie-movie-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.movie-info {
+  margin-bottom: 23px;
+
+  .details {
+    color: $mgrey;
+    font-size: 12px;
+    @extend .justify-content;
+  }
+}

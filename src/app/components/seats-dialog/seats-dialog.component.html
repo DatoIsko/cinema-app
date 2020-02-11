@@ -1,0 +1,55 @@
+<!-- Template for the seat component -->
+<div mat-dialog-title>
+  {{ movieTitle | uppercase }} ({{ startTime | date }})
+</div>
+<div mat-dialog-content>
+  <main class="innerContainer">
+    <!-- Showing a static legend bar -->
+    <div class="legend">
+      <i class="fa fa-stop "></i> FREE
+      <i class="fa fa-ban padding-left"></i> TAKEN
+      <i class="fa fa-check padding-left"></i> SELECTED
+    </div>
+
+    <p class="font14 marginTop5">SCREEN THIS WAY</p>
+    <div class="screen"></div>
+
+    <!-- Generate the seating grid -->
+    <div *ngFor="let row of places; let i = index">
+      <span *ngFor="let col of row" class="seat" (click)="seatClicked(i, col)">
+        <i *ngIf="col.isFree && col.selected" class="fa fa-check"></i>
+        <i *ngIf="!col.isFree" class="fa fa-ban"></i>
+        <i *ngIf="col.isFree && !col.selected" class="fa fa-stop"></i>
+      </span>
+    </div>
+
+    <!-- Structural directive - only visible on selection -->
+    <div *ngIf="selected.length > 0" class="font14 marginTB10">
+      <div class="wordWrap">SEATS RESERVED : {{ selected.length }}</div>
+      <div>
+        PRICE : {{ ticketPrice }} * {{ selected.length }} =
+        {{ ticketPrice * selected.length }} {{ currency }}
+      </div>
+      <div>TOTAL : {{ ticketPrice * selected.length }} {{ currency }}</div>
+    </div>
+  </main>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close cdkFocusInitial>Cancel</button>
+  <button
+    mat-button
+    color="warn"
+    (click)="clearSelected()"
+    [disabled]="!selected.length"
+  >
+    Clear
+  </button>
+  <button
+    mat-button
+    (click)="onSubbmit()"
+    [disabled]="!selected.length"
+    color="primary"
+  >
+    Buy Tickets
+  </button>
+</div>

@@ -1,0 +1,52 @@
+<main>
+  <div *ngIf="pageIsReady" class="container details-container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="title">{{ movie.name | uppercase }}</h1>
+      </div>
+      <div class="col-md-9">
+        <div class="row">
+          <div class="col-sm-6 col-md-4">
+            <img class="details-poster" [src]="movie?.pictureLink" alt="" />
+          </div>
+          <div class="col-sm-6 col-md-8">
+            <div class="details-info">
+              <ul>
+                <li>
+                  <strong>Release Date:</strong>
+                  {{ movie.dateOfRelease | date }}
+                </li>
+              </ul>
+            </div>
+            <div class="details-content">
+              <p>{{ movie.description }}</p>
+            </div>
+
+            <div class="details-genres">
+              <span *ngFor="let genre of movie.genres" class="genre">
+                {{ genre }}
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-12">
+            <button
+              (click)="openDialog()"
+              type="button"
+              class="btn btn-block btn-success"
+            >
+              Reserve Seats
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div routerLink="/" class="btn btn-regular">
+          Back to list
+          <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,34 @@
+<app-search (searchChange)="onSearch($event)"></app-search>
+<main>
+  <div class="container main-container">
+    <div class="section-header">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2 class="title">
+            <i class="fa fa-film" aria-hidden="true"></i>Movies
+          </h2>
+        </div>
+        <div class="col-sm-6 extra-features">
+          <div [ngClass]="{ active: showDropdown }" class="movies-genre">
+            <span (click)="toggleDropdown()"
+              >Choose a genre<i class="fa fa-angle-down" aria-hidden="true"></i
+            ></span>
+            <ul class="list">
+              <li (click)="setGenre(genre)" *ngFor="let genre of genres">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>{{ genre }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--section-header-->
+    <div class="row">
+      <app-movie-card
+        class="col-md-2 col-sm-4 col-xs-6 col-lg-2"
+        *ngFor="let movie of movieList"
+        [movie]="movie"
+      ></app-movie-card>
+    </div>
+  </div>
+</main>

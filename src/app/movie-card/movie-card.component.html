@@ -1,0 +1,16 @@
+<div class="row">
+  <div [routerLink]="['/movie', movie._id]" class="col-12 movie-box">
+    <div class="movie-item">
+      <div class="movie-poster">
+        <img [src]="movie?.pictureLink" alt="" />
+      </div>
+    </div>
+    <div class="movie-info">
+      <div class="movie-movie-title">{{ movie.name }}</div>
+      <div class="details">
+        <span class="rate">Release Date: {{ movie.dateOfRelease | date }}</span>
+        <span class="length">Genres: {{ movie.genre_id | genre }}</span>
+      </div>
+    </div>
+  </div>
+</div>
